@@ -4,8 +4,7 @@ import com.banksecure.maquina.CapturaDados;
 
 public class Memoria extends CapturaDados {
     public static double capturarDados() {
-        return (Math.ceil((double) getLooca().getMemoria().getEmUso()) /
-                ((double) getLooca().getMemoria().getTotal())) * 100;
+        return Double.parseDouble(df.format((((double) getLooca().getMemoria().getEmUso()) / ((double) getLooca().getMemoria().getTotal())) * 100).replace(",", "."));
     }
 
     public static void main(String[] args) {

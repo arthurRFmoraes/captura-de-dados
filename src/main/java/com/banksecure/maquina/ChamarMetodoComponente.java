@@ -14,7 +14,7 @@ public class ChamarMetodoComponente {
         executarClasses("com.banksecure.componente");
     }
 
-    private static void executarClasses(String nomePacote) {
+    public static void executarClasses(String nomePacote) {
         String caminhoPacote = nomePacote.replace('.', '/');
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         URL pacoteURL = classLoader.getResource(caminhoPacote);
