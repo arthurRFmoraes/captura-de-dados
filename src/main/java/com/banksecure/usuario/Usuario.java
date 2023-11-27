@@ -1,4 +1,4 @@
-package com.banksecure;
+package com.banksecure.usuario;
 
 public class Usuario {
     private int id;
