@@ -1,23 +1,25 @@
-package com.banksecure.maquina;
+package com.banksecure.dao;
 
-import com.banksecure.database.Conexao;
+import com.banksecure.dao.MaquinaDAO;
+import com.banksecure.database.ConexaoMysql;
+import com.banksecure.model.Componente;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
-public class Registro {
-    private static Conexao connection = new Conexao();
+public class RegistroDAO {
+    private static ConexaoMysql connection = new ConexaoMysql();
     private static JdbcTemplate con = connection.getConexaoDoBanco();
 
-    private static Integer getIdPorNomeMaquina(String nomeMaquina){
+    private static Integer getIdPorNomeComponente(String nomeComponente){
         Integer id = null;
         List<Componente> componentes = con.query("SELECT idComponente from componente where nome = ?",
                 new BeanPropertyRowMapper<>(Componente.class),
-                nomeMaquina);
+                nomeComponente);
         id = componentes.get(0).getIdComponente();
         return id;
     }
     public static void inserirRegistro(double valor, String nomeMaquina){
-        int idComponente = getIdPorNomeMaquina(nomeMaquina);
+        int idComponente = getIdPorNomeComponente(nomeMaquina);
         int idMaquina = MaquinaDAO.getMaquina().getIdMaquina();
         con.update("INSERT INTO registros (fkMaquina, fkComponente, valor, dataHora) VALUES (?, ?, ?, NOW())",
                 idMaquina, idComponente, valor);

@@ -1,4 +1,4 @@
-package com.banksecure.maquina;
+package com.banksecure.model;
 
 public class Componente {
     private int idComponente;

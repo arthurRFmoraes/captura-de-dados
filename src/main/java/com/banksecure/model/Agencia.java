@@ -1,4 +1,4 @@
-package com.banksecure.usuario;
+package com.banksecure.model;
 
 public class Agencia {
     private int idAgencia;
@@ -19,6 +19,8 @@ public class Agencia {
         this.telefoneAgencia = telefoneAgencia;
         this.fkEmpresa = fkEmpresa;
     }
+
+    public Agencia() {}
 
     public int getIdAgencia() {
         return idAgencia;

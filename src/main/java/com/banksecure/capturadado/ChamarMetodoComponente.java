@@ -1,6 +1,8 @@
-package com.banksecure.maquina;
+package com.banksecure.capturadado;
 
 import com.banksecure.helpdesk.AbrirChamado;
+import com.banksecure.dao.MaquinaDAO;
+import com.banksecure.dao.RegistroDAO;
 
 import java.io.File;
 import java.net.URL;
@@ -10,10 +12,6 @@ import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 public class ChamarMetodoComponente {
-    public static void main(String[] args) {
-        executarClasses("com.banksecure.componente");
-    }
-
     public static void executarClasses(String nomePacote) {
         String caminhoPacote = nomePacote.replace('.', '/');
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -38,7 +36,7 @@ public class ChamarMetodoComponente {
                             try {
                                 double valor = (double) metodoCaptura.invoke(instancia);
                                 String nomeComponente = (String) metodoGetNome.invoke(instancia);
-                                Registro.inserirRegistro(valor,nomeComponente);
+                                RegistroDAO.inserirRegistro(valor,nomeComponente);
                                 if(valor >= 60.0 && valor < 75.0){
                                     AbrirChamado.AbrirChamado(MaquinaDAO.getMaquina().getNome(), nomeComponente, valor, 3);
                                 }else if (valor >= 75.0 && valor < 90.0){

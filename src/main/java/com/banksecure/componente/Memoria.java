@@ -1,10 +1,16 @@
 package com.banksecure.componente;
 
-import com.banksecure.maquina.CapturaDados;
+import com.banksecure.capturadado.Monitoravel;
+import com.github.britooo.looca.api.core.Looca;
 
-public class Memoria extends CapturaDados {
+import java.text.DecimalFormat;
+
+public class Memoria implements Monitoravel {
+    
     public static double capturarDados() {
-        return Double.parseDouble(df.format((((double) getLooca().getMemoria().getEmUso()) / ((double) getLooca().getMemoria().getTotal())) * 100).replace(",", "."));
+        return Double.parseDouble(df.format((((double) looca.getMemoria().getEmUso()) /
+                        ((double) looca.getMemoria().getTotal())) * 100)
+                .replace(",", "."));
     }
 
     public static void main(String[] args) {

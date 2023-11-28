@@ -1,6 +1,4 @@
-package com.banksecure;
-
-import com.banksecure.maquina.ChamarMetodoComponente;
+package com.banksecure.capturadado;
 
 import java.util.TimerTask;
 

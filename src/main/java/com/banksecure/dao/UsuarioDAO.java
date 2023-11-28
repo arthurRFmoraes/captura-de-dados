@@ -1,6 +1,7 @@
-package com.banksecure.usuario;
+package com.banksecure.dao;
 
-import com.banksecure.database.Conexao;
+import com.banksecure.database.ConexaoMysql;
+import com.banksecure.model.Usuario;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO {
-    private static Conexao connection = new Conexao();
+    private static ConexaoMysql connection = new ConexaoMysql();
     private static JdbcTemplate con = connection.getConexaoDoBanco();
 
     public static Usuario login(Usuario usuario){
