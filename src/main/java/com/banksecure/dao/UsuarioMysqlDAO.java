@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDAO {
+public class UsuarioMysqlDAO {
     private static ConexaoMysql connection = new ConexaoMysql();
     private static JdbcTemplate con = connection.getConexaoDoBanco();
 

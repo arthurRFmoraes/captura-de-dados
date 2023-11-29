@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaquinaDAO {
+public class MaquinaMysqlDAO {
     private static Looca looca = new Looca();
     private static String macAddress = getMac();
 

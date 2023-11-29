@@ -5,11 +5,13 @@ import java.util.Scanner;
 import java.util.Timer;
 
 import com.banksecure.capturadado.CapturarDado;
-import com.banksecure.dao.MaquinaDAO;
+import com.banksecure.dao.MaquinaMysqlDAO;
+import com.banksecure.dao.MaquinaSqlServerDAO;
 import com.banksecure.model.Agencia;
-import com.banksecure.dao.AgenciaDAO;
+import com.banksecure.dao.AgenciaMysqlDAO;
+
 import com.banksecure.model.Usuario;
-import com.banksecure.dao.UsuarioDAO;
+import com.banksecure.dao.UsuarioMysqlDAO;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +23,7 @@ public class Main {
 
 
 
-        if(MaquinaDAO.maquinaJaRegistrada()){
+        if(MaquinaMysqlDAO.maquinaJaRegistrada()){
 
             System.out.println("Iniciando a captura de dados");
             CapturarDado c1 = new CapturarDado(1000, 6000);
@@ -42,7 +44,7 @@ public class Main {
                 String email = inputTexto.nextLine();
                 System.out.println("Digite sua senha: ");
                 String senha = inputTexto.nextLine();
-                usuario = UsuarioDAO.login(new Usuario(email, senha));
+                usuario = UsuarioMysqlDAO.login(new Usuario(email, senha));
 
             }while(Objects.isNull(usuario));
             boolean agenciaForaDoIndex;
@@ -53,7 +55,7 @@ public class Main {
 
             do{
 
-                List<Agencia> agencias = AgenciaDAO.getAgencias(usuario);
+                List<Agencia> agencias = AgenciaMysqlDAO.getAgencias(usuario);
                 if(agencias.isEmpty()){
                     System.out.println("Nenhuma agência vinculada a este funcionário.");
                     System.out.println("Programa encerrando...");
@@ -89,7 +91,8 @@ public class Main {
             System.out.println("Digite o nome da máquina: ");
             nomeMaquina = inputTexto.nextLine();
 
-            MaquinaDAO.registrarMaquina(agencia.getIdAgencia(), tipoMaquina, nomeMaquina);
+            MaquinaMysqlDAO.registrarMaquina(agencia.getIdAgencia(), tipoMaquina, nomeMaquina);
+            MaquinaSqlServerDAO.registrarMaquina(agencia.getIdAgencia(), tipoMaquina, nomeMaquina);
             System.out.println("Máquina registrada com sucesso!");
 
             System.out.println("Iniciando a captura de dados");

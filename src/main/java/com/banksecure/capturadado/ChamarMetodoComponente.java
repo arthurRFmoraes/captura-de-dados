@@ -1,8 +1,9 @@
 package com.banksecure.capturadado;
 
 import com.banksecure.helpdesk.AbrirChamado;
-import com.banksecure.dao.MaquinaDAO;
-import com.banksecure.dao.RegistroDAO;
+import com.banksecure.dao.MaquinaMysqlDAO;
+import com.banksecure.dao.RegistroMysqlDAO;
+import com.banksecure.dao.RegistroSqlServerDAO;
 
 import java.io.File;
 import java.net.URL;
@@ -36,14 +37,15 @@ public class ChamarMetodoComponente {
                             try {
                                 double valor = (double) metodoCaptura.invoke(instancia);
                                 String nomeComponente = (String) metodoGetNome.invoke(instancia);
-                                RegistroDAO.inserirRegistro(valor,nomeComponente);
+                                RegistroMysqlDAO.inserirRegistro(valor,nomeComponente);
+                                RegistroSqlServerDAO.inserirRegistro(valor,nomeComponente);
                                 if(valor >= 60.0 && valor < 75.0){
-                                    AbrirChamado.AbrirChamado(MaquinaDAO.getMaquina().getNome(), nomeComponente, valor, 3);
+                                    AbrirChamado.AbrirChamado(MaquinaMysqlDAO.getMaquina().getNome(), nomeComponente, valor, 3);
                                 }else if (valor >= 75.0 && valor < 90.0){
-                                    AbrirChamado.AbrirChamado(MaquinaDAO.getMaquina().getNome(), nomeComponente, valor, 2);
+                                    AbrirChamado.AbrirChamado(MaquinaMysqlDAO.getMaquina().getNome(), nomeComponente, valor, 2);
 
                                 }else if(valor >= 90.0){
-                                    AbrirChamado.AbrirChamado(MaquinaDAO.getMaquina().getNome(), nomeComponente, valor, 1);
+                                    AbrirChamado.AbrirChamado(MaquinaMysqlDAO.getMaquina().getNome(), nomeComponente, valor, 1);
                                 }
                             } catch (InvocationTargetException e) {
                                 e.printStackTrace();

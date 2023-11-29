@@ -1,12 +1,11 @@
 package com.banksecure.dao;
 
-import com.banksecure.dao.MaquinaDAO;
 import com.banksecure.database.ConexaoMysql;
 import com.banksecure.model.Componente;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
-public class RegistroDAO {
+public class RegistroMysqlDAO {
     private static ConexaoMysql connection = new ConexaoMysql();
     private static JdbcTemplate con = connection.getConexaoDoBanco();
 
@@ -20,13 +19,10 @@ public class RegistroDAO {
     }
     public static void inserirRegistro(double valor, String nomeMaquina){
         int idComponente = getIdPorNomeComponente(nomeMaquina);
-        int idMaquina = MaquinaDAO.getMaquina().getIdMaquina();
+        int idMaquina = MaquinaMysqlDAO.getMaquina().getIdMaquina();
         con.update("INSERT INTO registros (fkMaquina, fkComponente, valor, dataHora) VALUES (?, ?, ?, NOW())",
                 idMaquina, idComponente, valor);
 
     }
 
-    public static void main(String[] args) {
-        inserirRegistro(22.0, "CPU");
-    }
 }

@@ -8,10 +8,14 @@ public class ConexaoSqlServer {
     public ConexaoSqlServer() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/bankSecure");
-        dataSource.setUsername("user_bankSecure");
-        dataSource.setPassword("Urubu_100");
+        dataSource.setUrl("jdbc:sqlserver://xxxxxxxx:8080;databaseName=bankSecure");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("urubu100");
 
         conexaoDoBanco = new JdbcTemplate(dataSource);
+    }
+
+    public JdbcTemplate getConexaoDoBanco() {
+        return conexaoDoBanco;
     }
 }

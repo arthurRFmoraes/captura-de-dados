@@ -1,6 +1,6 @@
 package com.banksecure.dao;
 
-import com.banksecure.database.ConexaoMysql;
+import com.banksecure.database.ConexaoSqlServer;
 import com.banksecure.model.Agencia;
 import com.banksecure.model.Usuario;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -8,8 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
-public class AgenciaDAO {
-    private static ConexaoMysql connection = new ConexaoMysql();
+public class AgenciaSqlServerDAO {
+    private static ConexaoSqlServer connection = new ConexaoSqlServer();
     private static JdbcTemplate con = connection.getConexaoDoBanco();
 
     public static List<Agencia> getAgencias(Usuario u){
