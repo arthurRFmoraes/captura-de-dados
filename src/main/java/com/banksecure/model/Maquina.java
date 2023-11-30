@@ -7,6 +7,7 @@ public class Maquina {
     private String macAddress;
     private String localizacao;
     private String nome;
+    private String so;
 
     public int getIdMaquina() {
         return idMaquina;
@@ -56,4 +57,11 @@ public class Maquina {
         this.nome = nome;
     }
 
+    public String getSo() {
+        return so;
+    }
+
+    public void setSo(String so) {
+        this.so = so;
+    }
 }

@@ -41,7 +41,7 @@ public class MaquinaMysqlDAO {
 
     public static void registrarMaquina(int fkAgencia, int fkTipoMaquina, String nome){
         System.out.printf("%s %s %s %s\n", fkAgencia, fkTipoMaquina, macAddress, nome);
-        con.update("INSERT INTO maquina (fkAgencia, fkTipoMaquina, macAddress, nome) VALUES (?,?,?,?)",
+        con.update("INSERT INTO maquina (fkAgencia, fkTipoMaquina, macAddress, nome, localizacao, so) VALUES (?,?,?,?, '09937-123', 'Ubuntu 22.04')",
                 fkAgencia, fkTipoMaquina, macAddress, nome);
     }
     public static Maquina getMaquina(){
