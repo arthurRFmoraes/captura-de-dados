@@ -8,7 +8,7 @@ public class ConexaoSqlServer {
     public ConexaoSqlServer() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:sqlserver://xxxxxxxx:8080;databaseName=bankSecure");
+        dataSource.setUrl("jdbc:sqlserver://52.5.117.13:1433;databaseName=bankSecure");
         dataSource.setUsername("sa");
         dataSource.setPassword("urubu100");
 
